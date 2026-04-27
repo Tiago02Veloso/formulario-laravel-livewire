@@ -30,16 +30,25 @@
     <form wire:submit.prevent="salvar">
 
         {{-- Nome --}}
-        <div style="margin-bottom: 10px;">
-            <input type="text"
-                   wire:model.defer="nome"
-                   placeholder="Nome"
-                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;">
 
-            @error('nome')
-                <span style="color:red;">{{ $message }}</span>
-            @enderror
-        </div>
+<div style="margin-bottom:10px;">
+
+    <input type="text"
+           wire:model.defer="nome"
+           placeholder="Nome"
+           style="
+                width:100%;
+                padding:12px 14px;
+                border:1px solid #ccc;
+                border-radius:4px;
+                outline:none;
+           ">
+
+    @error('nome')
+        <span style="color:red;font-size:13px;">{{ $message }}</span>
+    @enderror
+
+</div>
 
         {{-- Email + Telefone --}}
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">

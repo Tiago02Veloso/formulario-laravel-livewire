@@ -33,12 +33,17 @@ class PessoaEdit extends Component
 
     protected $messages = [
         'nome.required' => 'O nome é obrigatório.',
+        'nome.min' => 'O nome deve ter no mínimo 3 caracteres.',
+
         'email.required' => 'O e-mail é obrigatório.',
         'email.email' => 'Informe um e-mail válido.',
+
         'telefone.required' => 'O telefone é obrigatório.',
         'cep.required' => 'O CEP é obrigatório.',
+
         'cpf.required' => 'O CPF é obrigatório.',
         'cpf.digits' => 'O CPF deve ter 11 números.',
+        'cpf.unique' => 'Este CPF já está cadastrado.',
     ];
 
     public function mount($id)
@@ -55,16 +60,16 @@ class PessoaEdit extends Component
 
     public function atualizar()
     {
+        // garante limpeza do CPF antes de validar
         $this->cpf = preg_replace('/\D/', '', $this->cpf);
 
         $dados = $this->validate();
 
-        Pessoa::findOrFail($this->pessoaId)
-            ->update($dados);
+        Pessoa::findOrFail($this->pessoaId)->update($dados);
 
         session()->flash('message', 'Registro atualizado com sucesso!');
 
-        return redirect('/');
+        return redirect()->route('pessoas.list');
     }
 
     public function render()

@@ -1,16 +1,16 @@
 <div
-    style="
-        max-width: 900px;
-        margin: auto;
-        padding: 20px;
-        width: 100%;
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    "
+   style="
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 25px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+"
 >
 
-    <h2 style="text-align: center; margin-bottom: 20px;">
+    <h2 style="text-align: center; margin-bottom: px;">
         Lista de Pessoas
     </h2>
 
@@ -48,15 +48,15 @@
         <table style="width: 100%; border-collapse: collapse;">
 
             <thead>
-                <tr style="background: #f3f4f6;">
-                    <th style="padding: 10px; border: 1px solid #ddd;">Nome</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Email</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Telefone</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">CEP</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">CPF</th>
-                    <th style="padding: 10px; border: 1px solid #ddd;">Ações</th>
-                </tr>
-            </thead>
+    <tr style="background: #f3f4f6;">
+        <th style="padding: 16px; border: 1px solid #ddd; width: 25%;">Nome</th>
+        <th style="padding: 16px; border: 1px solid #ddd; width: 25%;">Email</th>
+        <th style="padding: 16px; border: 1px solid #ddd; width: 15%;">Telefone</th>
+        <th style="padding: 16px; border: 1px solid #ddd; width: 10%;">CEP</th>
+        <th style="padding: 16px; border: 1px solid #ddd; width: 15%;">CPF</th>
+        <th style="padding: 16px; border: 1px solid #ddd; width: 10%;">Ações</th>
+    </tr>
+</thead>
 
             <tbody>
 
@@ -84,37 +84,46 @@
                             {{ $pessoa->cpf }}
                         </td>
 
-                        <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+                        <td style="padding: 16px; border: 1px solid #ddd; text-align: center;">
 
-                            {{-- Editar --}}
-                            <a href="{{ route('pessoas.edit', $pessoa->id) }}"
-                               style="
-                                    background: #f59e0b;
-                                    color: white;
-                                    padding: 6px 10px;
-                                    text-decoration: none;
-                                    border-radius: 4px;
-                                    margin-right: 5px;
-                               ">
-                                Editar
-                            </a>
+    <div style="
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    ">
 
-                            {{-- Excluir Livewire --}}
-                            <button
-                                wire:click="excluir({{ $pessoa->id }})"
-                                onclick="return confirm('Tem certeza que deseja excluir?')"
-                                style="
-                                    background: #dc2626;
-                                    color: white;
-                                    padding: 6px 10px;
-                                    border: none;
-                                    border-radius: 4px;
-                                    cursor: pointer;
-                                ">
-                                Excluir
-                            </button>
+        <a href="{{ route('pessoas.edit', $pessoa->id) }}"
+           style="
+                background: #f59e0b;
+                color: white;
+                padding: 8px 14px;
+                text-decoration: none;
+                border-radius: 6px;
+                font-size: 14px;
+                font-weight: bold;
+           ">
+            Editar
+        </a>
 
-                        </td>
+        <button
+            wire:click="excluir({{ $pessoa->id }})"
+            onclick="return confirm('Tem certeza que deseja excluir?')"
+            style="
+                background: #dc2626;
+                color: white;
+                padding: 8px 14px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+           ">
+            Excluir
+        </button>
+
+    </div>
+
+</td>
 
                     </tr>
 
